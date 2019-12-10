@@ -25,6 +25,7 @@ class _LoginPageState extends State<LoginPage> {
                 if(input.isEmpty){
                   return 'Provide an email';
                 }
+                return null;
               },
               decoration: InputDecoration(
                 labelText: 'Email'
@@ -36,6 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                 if(input.length < 6){
                   return 'Longer password please';
                 }
+                return null;
               },
               decoration: InputDecoration(
                 labelText: 'Password'
@@ -57,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
     if(_formKey.currentState.validate()){
       _formKey.currentState.save();
       try{
-        FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
+        FirebaseUser user = (await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password)) as FirebaseUser;
         Navigator.push(context, MaterialPageRoute(builder: (context) => Home(user: user)));
       }catch(e){
         print(e.message);
