@@ -25,6 +25,7 @@ class _LoginPageState extends State<LoginPage> {
                 if(input.isEmpty){
                   return 'Provide an email';
                 }
+                return null;
               },
               decoration: InputDecoration(
                 labelText: 'Email'
@@ -36,6 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                 if(input.length < 6){
                   return 'Longer password please';
                 }
+                return null;
               },
               decoration: InputDecoration(
                 labelText: 'Password'
